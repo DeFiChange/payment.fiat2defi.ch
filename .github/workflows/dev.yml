@@ -2,7 +2,7 @@ name: CI/CD DEV
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ feature/rg-merge ]
   workflow_dispatch:
 
 jobs:
@@ -46,7 +46,7 @@ jobs:
         with:
           azcliversion: 2.0.72
           inlineScript: |
-            az storage blob upload-batch --account-name stdfxpaydev -d '$web' -s ./web-build
+            az storage blob upload-batch --account-name stdfxdev -d '$web' -s ./web-build
 
       - name: Purge CDN endpoint (DEV)
         uses: azure/CLI@v1
